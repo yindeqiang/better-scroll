@@ -326,7 +326,7 @@ export default class Indicator {
 
   updatePosition(point: TranslaterPoint) {
     const { pos, size } = this.caculatePosAndSize(point, this.scrollInfo)
-    this.refreshStyle(size, pos)
+    this.refreshStyle(size, Math.round(pos))
     this.currentPos = pos
   }
 
@@ -338,7 +338,7 @@ export default class Indicator {
     const { sizeRatio, baseSize, maxScrollPos, minScrollPos } = scrollInfo
     const minSize = this.options.minSize
 
-    let pos = Math.round(sizeRatio * point[posKey])
+    let pos = sizeRatio * point[posKey]
     let size
     // when out of boundary, slow down size reduction
     if (pos < minScrollPos) {
